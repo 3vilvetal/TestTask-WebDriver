@@ -1,5 +1,4 @@
-package page;
-
+package system;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
@@ -7,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SeleniumBaseClass {
+public class WebDriverBaseClass {
 	
 	public WebDriver driver;
 	WebDriverWait wait;
@@ -20,8 +19,26 @@ public class SeleniumBaseClass {
 	 * this is example of XPATH that will prepare all element of menu you can get text for each element
 	 * .//div[@class='navbar navbar-fixed-top']/div[@class='navbar-inner']/ul[@class='nav']//li/a
 	 */
-	public ArrayList<WebElement> getMultiElementsByXpath(String xpath){
+	public ArrayList<WebElement> getMultiElementsByXpath(String xpath) {
 		return (ArrayList<WebElement>) (driver.findElements(By.xpath(xpath)));
+	}
+	
+	/**
+	 * Method that return text of single element by XPATH
+	 * @param xpath
+	 * @return String 
+	 * @throws 
+	 */
+	public String getOneElementByXpath(String xpath) {
+		return driver.findElement(By.xpath(xpath)).getText();
+	}
+
+	/**
+	 * Method that click on element by XPATH
+	 * @param xpath
+	 */	
+	public void clickOnElementByXpath(String xpath) {
+		driver.findElement(By.xpath(xpath)).click();
 	}
 	
 	/**
@@ -41,24 +58,6 @@ public class SeleniumBaseClass {
 			if (temp != null) arrayOfAttributes.add(temp);
 		}
 		return arrayOfAttributes;
-	}
-	
-	/**
-	 * Method that return text of single element by XPATH
-	 * @param xpath
-	 * @return String 
-	 * @throws 
-	 */
-	public String getOneElementByXpath(String xpath){
-		return driver.findElement(By.xpath(xpath)).getText();
-	}
-
-	/**
-	 * Method that click on element by XPATH
-	 * @param xpath
-	 */	
-	public void clickOnElementByXpath(String xpath){
-		driver.findElement(By.xpath(xpath)).click();
 	}
 	
 }
