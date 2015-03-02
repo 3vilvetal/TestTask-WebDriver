@@ -6,6 +6,11 @@ import org.openqa.selenium.WebDriver;
 
 import system.WebDriverBaseClass;
 
+/**
+ * Class that implements page object for Google login page
+ * @author Vitalii L.
+ *
+ */
 public class SignInPage extends WebDriverBaseClass {
 	
 	public SignInPage (WebDriver driver) {
@@ -37,7 +42,7 @@ public class SignInPage extends WebDriverBaseClass {
 	/**
 	 * Check that login succeed
 	 */
-	public void assertLoginSuccessed() {
+	public void assertLoginSuccessful() {
 		Assert.assertTrue(driver.findElement(By.id("hplogo")).isDisplayed());
 	}
 }

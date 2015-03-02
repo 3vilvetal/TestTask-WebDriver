@@ -12,12 +12,18 @@ public class TestLogin {
 	
 	private FirefoxDriver driver;
 	
+	/**
+	 * Condition before each test
+	 */
 	@Before
 	public void setPrecondition(){
 		driver = new FirefoxDriver();
 		driver.get("https://www.google.com/");
 	}
 	
+	/**
+	 * Check adequate behavior when login failed 
+	 */
 	@Test
 	public void loginFailed(){
 		
@@ -28,16 +34,22 @@ public class TestLogin {
 		signInPage.assertLoginFailed();
 	}
 	
+	/**
+	 * Check that login was successful
+	 */
 	@Test
-	public void loginSuccessed() {
+	public void loginSuccessful() {
 		
 		MainPage mainPage = new MainPage(driver);
 		SignInPage signInPage = mainPage.signIn();
 		
 		signInPage.login("login", "pass");
-		signInPage.assertLoginSuccessed();
+		signInPage.assertLoginSuccessful();
 	}
 	
+	/**
+	 * Condition after each test
+	 */
 	@After
 	public void setPoscondition(){
 		driver.close();
