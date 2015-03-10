@@ -1,11 +1,14 @@
 package tests;
 
+import java.util.List;
+
 import objects.MainPage;
-import objects.SignInPage;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestLogin {
@@ -18,34 +21,27 @@ public class TestLogin {
 	@Before
 	public void setPrecondition(){
 		driver = new FirefoxDriver();
-		driver.get("https://www.google.com/");
+		driver.get("http://rozetka.com.ua/");
 	}
 	
-	/**
-	 * Check adequate behavior when login failed 
-	 */
+	
 	@Test
-	public void loginFailed(){
+	public void search(){
 		
 		MainPage mainPage = new MainPage(driver);
-		SignInPage signInPage = mainPage.signIn();
+		mainPage.chooseSubGroup("Телефоны, MP3, GPS", "Смартфоны");
 		
-		signInPage.login("hello", "world");
-		signInPage.assertLoginFailed();
+		List <WebElement> topSales = driver.findElements(By.xpath(".//div[@class='gtile-i-image  popularity']"));
+		
+		System.out.println(topSales.get(0).findElement(By.xpath(".//../../../div[@class='gtile-i-title']/a")).getText());
+		
+//		List <WebElement> temp = driver.findElementsByCssSelector(".goods .action .tag, .goods .novelty .tag, .goods .popularity .tag");
+//		WebElement parent = temp.get(0).findElement(By.xpath(".."));
+//		System.out.println(parent.getAttribute("class"));
+		
+		
 	}
 	
-	/**
-	 * Check that login was successful
-	 */
-	@Test
-	public void loginSuccessful() {
-		
-		MainPage mainPage = new MainPage(driver);
-		SignInPage signInPage = mainPage.signIn();
-		
-		signInPage.login("login", "pass");
-		signInPage.assertLoginSuccessful();
-	}
 	
 	/**
 	 * Condition after each test
