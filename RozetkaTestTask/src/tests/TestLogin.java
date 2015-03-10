@@ -1,6 +1,6 @@
 package tests;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import objects.MainPage;
 
@@ -31,14 +31,12 @@ public class TestLogin {
 		MainPage mainPage = new MainPage(driver);
 		mainPage.chooseSubGroup("Телефоны, MP3, GPS", "Смартфоны");
 		
-		List <WebElement> topSales = driver.findElements(By.xpath(".//div[@class='gtile-i-image  popularity']"));
-		
-		System.out.println(topSales.get(0).findElement(By.xpath(".//../../../div[@class='gtile-i-title']/a")).getText());
+		ArrayList<WebElement> topSales = mainPage.getMultiElementsByXpath(".//div[@class='gtile-i-image  popularity']");
+		System.out.println(topSales.get(1).findElement(By.xpath(".//../../../div[@class='gtile-i-title']/a")).getText());
 		
 //		List <WebElement> temp = driver.findElementsByCssSelector(".goods .action .tag, .goods .novelty .tag, .goods .popularity .tag");
 //		WebElement parent = temp.get(0).findElement(By.xpath(".."));
 //		System.out.println(parent.getAttribute("class"));
-		
 		
 	}
 	
