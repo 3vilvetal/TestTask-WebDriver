@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import report.Report;
+
 public class TestSearch {
 	
 	private FirefoxDriver driver;
@@ -44,6 +46,10 @@ public class TestSearch {
 		
 		//STEP 4: Save results to database
 		resultsPage.reportResults(topSales);
+		
+		//STEP 5: Send results on email
+		Report report = new Report();
+		report.sendReport(system.Date.getYesterdayDate(), system.Date.getTomorowDate());
 	}
 	
 	/**

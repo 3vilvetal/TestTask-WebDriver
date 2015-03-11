@@ -8,6 +8,8 @@ import java.sql.Statement;
 
 public class MysqlConnection 
 {
+	XmlParser xml = new XmlParser("access.xml");
+	
 	//JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	static final String DB_URL = "jdbc:mysql://localhost/test";
@@ -19,6 +21,29 @@ public class MysqlConnection
 	private static Connection connect = null;
 	private static Statement statement = null;
 	private static ResultSet resultSet = null;
+	
+	public ResultSet selectFromTable(String sqlQuery) {
+		
+		try {
+			  //Register JDBC driver
+		      Class.forName(JDBC_DRIVER);
+	
+		      //Open a connection
+		      connect = DriverManager.getConnection(DB_URL, USER, PASS);
+		      
+		      //Execute a query
+		      statement = connect.createStatement();
+		      resultSet = statement.executeQuery(sqlQuery);
+		      
+		}catch(SQLException se) {
+			//Handle errors for JDBC
+			se.printStackTrace();
+		}catch(Exception e) {
+			//Handle errors for Class.forName
+			e.printStackTrace();
+		}
+		return resultSet;
+	}
 	
 	/**
 	 * Method for updates or inserts in the database table
@@ -56,7 +81,7 @@ public class MysqlConnection
 	/**
 	 * Close everything
 	 */
-	private static void closeAll() {
+	public static void closeAll() {
 		try {
 			if (resultSet != null) {
 				resultSet.close();
