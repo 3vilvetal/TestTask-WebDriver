@@ -1,0 +1,14 @@
+<access>
+	<email>
+		<emailLogin>test@gmail.com</emailLogin>
+		<emailPass>*********</emailPass>
+		<emailTo>test@ukr.net</emailTo>
+		<emailTo>hello@ukr.net</emailTo>
+	</email>
+	<database>
+		<jdbcDriver>com.mysql.jdbc.Driver</jdbcDriver>
+		<dbUrl>jdbc:mysql://localhost/test</dbUrl>
+		<dbUser>root</dbUser>
+		<dbPass>****</dbPass>
+	</database>
+</access>
