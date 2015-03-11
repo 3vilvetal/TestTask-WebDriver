@@ -2,6 +2,7 @@ package objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import system.WebDriverBaseClass;
 
@@ -20,7 +21,8 @@ public class MainPage extends WebDriverBaseClass {
 	 * Turn off split test if it is present 
 	 */
 	public void switchSplitTest() {
-		if (driver.findElement(By.xpath(".//div[@id='split_test_switcher']")).isDisplayed()) driver.findElement(By.xpath(".//div[@id='split_test_switcher']/a")).click();
+		WebElement split = findElementSafe(driver, By.xpath(".//div[@id='split_test_switcher']/a"));
+		if (split != null) split.click();
 	}
 	
 	/**

@@ -2,6 +2,7 @@ package system;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,4 +61,21 @@ public class WebDriverBaseClass {
 		return arrayOfAttributes;
 	}
 	
+	/**
+	 * Don't crash test (return null) in case when WebDriver didn't find an element on a page
+	 * @param driver
+	 * @param by
+	 * @return
+	 */
+	public WebElement findElementSafe(WebDriver driver, By by)
+    {
+        try
+        {
+            return driver.findElement(by);
+        }
+        catch (NoSuchElementException exception)
+        {
+            return null;
+        }
+    }
 }

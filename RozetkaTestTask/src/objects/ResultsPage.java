@@ -9,6 +9,11 @@ import org.openqa.selenium.WebElement;
 import system.MysqlConnection;
 import system.WebDriverBaseClass;
 
+/**
+ * Class for any page with results for Rozetka site
+ * @author Vitalii L.
+ *
+ */
 public class ResultsPage extends WebDriverBaseClass {
 	
 	public ResultsPage (WebDriver driver) {
@@ -32,7 +37,7 @@ public class ResultsPage extends WebDriverBaseClass {
 	}
 	
 	/**
-	 * Insert values to database table (only 'name' and 'price' values)
+	 * Get and insert values to database table (only 'name' and 'price' values)
 	 * @param elements
 	 */
 	public void reportResults(ArrayList<WebElement> elements) {

@@ -32,11 +32,11 @@ public class TestSearch {
 		
 		MainPage mainPage = new MainPage(driver); //init mane page 
 		
-		//STEP 1: Split test handling
-//		mainPage.switchSplitTest();
+		//STEP 1: Split test handling		
+		mainPage.switchSplitTest();
 		
 		//STEP 2: Search
-		ResultsPage resultsPage = mainPage.chooseSubGroup("Телефоны, MP3, GPS", "Смартфоны"); //choose "Смартфоны" sub-group
+		ResultsPage resultsPage = mainPage.chooseSubGroup("Телефоны, MP3, GPS", "Смартфоны"); //choose "Смартфоны" sub-group and init results page
 		resultsPage.moreResults(2); //click 2 times "more results" button (display 2 more pages)
 		
 		//STEP 3: Find results 
