@@ -1,5 +1,6 @@
 package objects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import system.WebDriverBaseClass;
@@ -13,6 +14,13 @@ public class MainPage extends WebDriverBaseClass {
 	
 	public MainPage (WebDriver driver) {
 		this.driver = driver;
+	}
+	
+	/**
+	 * Turn off split test if it is present 
+	 */
+	public void switchSplitTest() {
+		if (driver.findElement(By.xpath(".//div[@id='split_test_switcher']")).isDisplayed()) driver.findElement(By.xpath(".//div[@id='split_test_switcher']/a")).click();
 	}
 	
 	/**

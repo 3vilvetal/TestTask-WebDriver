@@ -32,7 +32,7 @@ public class ResultsPage extends WebDriverBaseClass {
 	}
 	
 	/**
-	 * Insert values to database
+	 * Insert values to database table (only 'name' and 'price' values)
 	 * @param elements
 	 */
 	public void reportResults(ArrayList<WebElement> elements) {
@@ -41,13 +41,10 @@ public class ResultsPage extends WebDriverBaseClass {
 		String name, price;
 		
 		for (int i = 0; i < elements.size(); i++) {
-			
 			name = elements.get(i).findElement(By.xpath(".//../../../div[@class='gtile-i-title']/a")).getText();
 			price = elements.get(i).findElement(By.xpath(".//../../../div[@class='row-price-buy']/div/div/div")).getText();
 			
-			connection.executeQuery("INSERT INTO testresults (name, price) VALUES ('" + name + "', '" + price + "')");
+			connection.updateTable("INSERT INTO test_results (name, price) VALUES ('" + name + "', '" + price + "')");
 		}
-		
 	}
-	
 }
