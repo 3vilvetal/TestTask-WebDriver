@@ -6,9 +6,13 @@ import java.sql.SQLException;
 
 import system.Email;
 import system.MysqlConnection;
-import system.XmlParser;
+import system.StaticValues;
 
 public class Report {
+	
+	String from = StaticValues.getEmailLogin();
+    String pass = StaticValues.getEmailPass();
+    String [] to = StaticValues.getEmailList();
 	
 	/**
 	 * Sample: send report for current date items
@@ -28,10 +32,9 @@ public class Report {
 		
 		String body = "Today we found this list of test data: \n";
 		
-		XmlParser xml = new XmlParser("access.xml");
 		Email email = new Email();
-		
 		MysqlConnection connection = new MysqlConnection();
+		
 		ResultSet rs = connection.selectFromTable("SELECT * FROM test_results where timestmp between '" + 
 				dateFrom +"' AND '" + dateTo +"'");
 		      try {
@@ -53,17 +56,8 @@ public class Report {
 		      } catch (SQLException e) {
 		    	  e.printStackTrace();
 		      }
-		      
-		      String from = xml.getValues("emailLogin").get(0);
-		      String pass = xml.getValues("emailPass").get(0);
-		        
-		      //list of recipient email addresses 
-		      int toSize = xml.getValues("emailTo").size();
-		      String [] to = new String [toSize];
-		      to = xml.getValues("emailTo").toArray(to);     
-		      
 		      String subject = "Test results, " + system.Date.getCurrentDate();
-		      
+		      //Send email message
 		      email.sendFromGMail(from, pass, to, subject, body);
 	}
 }

@@ -8,15 +8,13 @@ import java.sql.Statement;
 
 public class MysqlConnection 
 {
-	XmlParser xml = new XmlParser("access.xml");
-	
 	//JDBC driver name and database URL
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-	static final String DB_URL = "jdbc:mysql://localhost/test";
+	static final String JDBC_DRIVER = StaticValues.getJdbcDriver();
+	static final String DB_URL = StaticValues.getDbUrl();
 
 	//Database credentials
-	static final String USER = "root";
-	static final String PASS = "1111";
+	static final String USER = StaticValues.getDbUser();
+	static final String PASS = StaticValues.getDbPass();
 	
 	private static Connection connect = null;
 	private static Statement statement = null;
