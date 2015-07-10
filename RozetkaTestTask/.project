@@ -3,6 +3,7 @@
 	<name>RozetkaTestTask</name>
 	<comment></comment>
 	<projects>
+		<project>MarmonicTest</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
